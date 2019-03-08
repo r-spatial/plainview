@@ -1,8 +1,8 @@
-Package: slideview
+Package: plainview
 Type: Package
-Title: Compare Raster Images Side by Side with a Slider
+Title: Plot Raster Images Interactively on a Plain HTML Canvas
 Version: 0.1.0
-Date: 2019-02-11
+Date: 2019-03-08
 Authors@R: 
     c(person(given = "Tim",
              family = "Appelhans",
@@ -13,9 +13,13 @@ Authors@R:
              role = "aut",
              email = "stephan.woellauer@geo.uni-marburg.de"))
 Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
-Description: Create a side-by-side view of raster(image)s with an interactive 
-    slider to switch between regions of the images. This can be especially useful
-    for image comparison of the same region at different time stamps.
+Description: Provides methods for plotting potentially large (raster) images
+    interactively on a plain HTML canvas. 
+    Supports plotting of RasterLayer, RasterStack, RasterBrick
+    (from package raster) as well as png files located on disk. Interactivity
+    includes zooming, panning, and mouse location information. In case of 
+    multi-layer RasterStacks or RasterBricks, RBG image plots are created 
+    (similar to raster::plotRGB - but interactive).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
