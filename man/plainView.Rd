@@ -47,9 +47,7 @@ decribed in the \code{colorkey} section of \link[lattice]{levelplot}.}
 to create the png file for display when possible. See details for further
 information.}
 
-\item{...}{additional arguments passed on to repective functions.
-See \code{\link{addRasterImage}}, \code{\link{addCircles}},
-\code{\link{addPolygons}}, \code{\link{addPolylines}} for details}
+\item{...}{arguments passed on to respective methods}
 
 \item{r}{integer. Index of the Red channel, between 1 and nlayers(x)}
 
@@ -88,7 +86,7 @@ For plainView there are a few keyboard shortcuts defined:
 \itemize{
 \item \code{RasterStackBrick}: \code{\link{stack}} / \code{\link{brick}}
 
-\item \code{SpatialPixelsDataFrame}: \code{\link{SpatialPixelsDataFrame}}
+\item \code{SpatialPixelsDataFrame}: \code{\link[sp]{SpatialPixelsDataFrame}}
 
 \item \code{ANY}: alias for ease of typing
 }}
@@ -106,15 +104,6 @@ meuse_rst <- stack(meuse.grid)
 
 # SpatialPixelsDataFrame
 plainView(meuse.grid, zcol = "dist")
-
-\dontrun{
-# raster layer
-m1 <- plainView(poppendorf[[5]])
-m1
-
-# raster stack - true color
-plainview(poppendorf, 4, 3, 2)
-}
 
 }
 \author{

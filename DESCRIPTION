@@ -29,9 +29,12 @@ Imports:
     htmltools,
     htmlwidgets,
     lattice,
+    png,
     raster,
+    sf,
     viridisLite
 Suggests:
-    jpeg
+    jpeg,
+    sp
 LazyData: true
 RoxygenNote: 6.1.0

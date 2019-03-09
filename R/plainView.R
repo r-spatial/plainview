@@ -23,9 +23,7 @@ if ( !isGeneric('plainView') ) {
 #' @param gdal logical. If TRUE (default) gdal_translate is used
 #' to create the png file for display when possible. See details for further
 #' information.
-#' @param ... additional arguments passed on to repective functions.
-#' See \code{\link{addRasterImage}}, \code{\link{addCircles}},
-#' \code{\link{addPolygons}}, \code{\link{addPolylines}} for details
+#' @param ... arguments passed on to respective methods
 #'
 #' @details
 #' If the raster object is not in memory
@@ -66,20 +64,20 @@ if ( !isGeneric('plainView') ) {
 #' # SpatialPixelsDataFrame
 #' plainView(meuse.grid, zcol = "dist")
 #'
-#' \dontrun{
-#' # raster layer
-#' m1 <- plainView(poppendorf[[5]])
-#' m1
-#'
-#' # raster stack - true color
-#' plainview(poppendorf, 4, 3, 2)
-#' }
-#'
+#' @docType methods
 #' @export plainView
 #' @name plainView
 #' @rdname plainView
 #' @aliases plainView,RasterLayer-method
-#' @importFrom grDevices grey.colors
+#'
+#' @importFrom grDevices grey.colors dev.off col2rgb rgb
+#' @importFrom viridisLite inferno
+#' @importFrom raster raster as.matrix subset sampleRegular fromDisk filename bandnr projection nrow ncol ncell
+#' @importFrom sf gdal_utils
+#' @importFrom png writePNG
+#' @importFrom lattice do.breaks level.colors draw.colorkey
+#' @importFrom stats quantile
+#' @importFrom methods setMethod
 
 ## RasterLayer ============================================================
 
@@ -361,7 +359,7 @@ setMethod('plainView', signature(x = 'RasterStackBrick'),
 
 
 ## SpatialPixelsDataFrame =================================================
-#' @describeIn plainView \code{\link{SpatialPixelsDataFrame}}
+#' @describeIn plainView \code{\link[sp]{SpatialPixelsDataFrame}}
 #'
 #' @param zcol attribute name or column number in attribute table
 #' of the column to be rendered
