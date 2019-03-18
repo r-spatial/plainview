@@ -14,12 +14,14 @@ Authors@R:
              email = "stephan.woellauer@geo.uni-marburg.de"))
 Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
 Description: Provides methods for plotting potentially large (raster) images
-    interactively on a plain HTML canvas. 
-    Supports plotting of classes RasterLayer, RasterStack, RasterBrick
-    (from package 'raster') as well as png files located on disk. Interactivity
-    includes zooming, panning, and mouse location information. In case of 
-    multi-layer RasterStacks or RasterBricks, RBG image plots are created 
-    (similar to raster::plotRGB - but interactive).
+    interactively on a plain HTML canvas. In contrast to package 'mapview'
+    data are plotted without background map, but data can be projected to
+    any spatial coordinate reference system.
+    Supports plotting of classes 'RasterLayer', 'RasterStack', 'RasterBrick'
+    (from package 'raster') as well as 'png' files located on disk. 
+    Interactivity includes zooming, panning, and mouse location information. 
+    In case of multi-layer 'RasterStacks' or 'RasterBricks', RGB image plots 
+    are created (similar to 'raster::plotRGB' - but interactive).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
