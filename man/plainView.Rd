@@ -92,18 +92,16 @@ For plainView there are a few keyboard shortcuts defined:
 }}
 
 \examples{
-### raster data ###
-library(sp)
-library(raster)
+if (interactive()) {
 
-data(meuse.grid)
-coordinates(meuse.grid) = ~x+y
-proj4string(meuse.grid) <- CRS("+init=epsg:28992")
-gridded(meuse.grid) = TRUE
-meuse_rst <- stack(meuse.grid)
+  # RasterLayer
+  plainView(poppendorf[[4]])
 
-# SpatialPixelsDataFrame
-plainView(meuse.grid, zcol = "dist")
+  # RasterStack
+  plainview(poppendorf, r = 4, g = 3, b = 2) # true color
+  plainview(poppendorf, r = 5, g = 4, b = 3) # false color
+
+}
 
 }
 \author{

@@ -51,18 +51,16 @@ if ( !isGeneric('plainView') ) {
 #' Tim Appelhans
 #'
 #' @examples
-#' ### raster data ###
-#' library(sp)
-#' library(raster)
+#' if (interactive()) {
 #'
-#' data(meuse.grid)
-#' coordinates(meuse.grid) = ~x+y
-#' proj4string(meuse.grid) <- CRS("+init=epsg:28992")
-#' gridded(meuse.grid) = TRUE
-#' meuse_rst <- stack(meuse.grid)
+#'   # RasterLayer
+#'   plainView(poppendorf[[4]])
 #'
-#' # SpatialPixelsDataFrame
-#' plainView(meuse.grid, zcol = "dist")
+#'   # RasterStack
+#'   plainview(poppendorf, r = 4, g = 3, b = 2) # true color
+#'   plainview(poppendorf, r = 5, g = 4, b = 3) # false color
+#'
+#' }
 #'
 #' @docType methods
 #' @export plainView
@@ -73,7 +71,7 @@ if ( !isGeneric('plainView') ) {
 #' @importFrom grDevices grey.colors dev.off col2rgb rgb
 #' @importFrom viridisLite inferno
 #' @importFrom raster raster as.matrix subset sampleRegular fromDisk filename bandnr projection nrow ncol ncell
-#' @importFrom sf gdal_utils
+#' @importFrom gdalUtils gdal_translate
 #' @importFrom png writePNG
 #' @importFrom lattice do.breaks level.colors draw.colorkey
 #' @importFrom stats quantile
@@ -100,17 +98,17 @@ setMethod('plainView', signature(x = 'RasterLayer'),
             fl <- paste0(dir, "/img", ".png")
 
             if (raster::fromDisk(x) & gdal) {
-              # gdalUtils::gdal_translate(src_dataset = raster::filename(x),
-              #                           dst_dataset = fl,
-              #                           of = "PNG",
-              #                           b = raster::bandnr(x),
-              #                           verbose = verbose)
-              tmp = sf::gdal_utils(util = "translate",
-                                   source = raster::filename(x),
-                                   destination = fl,
-                                   options = c("-of", "PNG", "-b",
-                                               as.character(raster::bandnr(x)),
-                                               "-scale", "-ot", "Byte"))
+              gdalUtils::gdal_translate(src_dataset = raster::filename(x),
+                                        dst_dataset = fl,
+                                        of = "PNG",
+                                        b = raster::bandnr(x),
+                                        verbose = verbose)
+              # tmp = sf::gdal_utils(util = "translate",
+              #                      source = raster::filename(x),
+              #                      destination = fl,
+              #                      options = c("-of", "PNG", "-b",
+              #                                  as.character(raster::bandnr(x)),
+              #                                  "-scale", "-ot", "Byte"))
             } else {
               png <- raster2PNG(x,
                                 col.regions = col.regions,
@@ -297,13 +295,44 @@ plainViewInternal <- function(filename, imgnm, crs, dims, leg_fl = NULL) {
   )
 }
 
-
+#' Widget output/render function for use in Shiny
+#'
+#' @param outputId Output variable to read from
+#' @param width,height the width and height of the map
+#' (see \code{\link{shinyWidgetOutput}})
+#'
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'
+#'   plt = plainView(poppendorf[[4]])
+#'
+#'   ui = fluidPage(
+#'     plainViewOutput("plot")
+#'   )
+#'
+#'   server = function(input, output, session) {
+#'     output$plot <- renderPlainView(plt)
+#'   }
+#'
+#'   shinyApp(ui, server)
+#'
+#' }
+#'
+#' @name plainViewOutput
+#' @export
 plainViewOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'plainView',
                                  width, height, package = 'mapview')
 }
 
-
+#' @param expr An expression that generates an HTML widget
+#' @param env The environment in which to evaluate expr
+#' @param quoted Is expr a quoted expression (with quote())?
+#' This is useful if you want to save an expression in a variable
+#'
+#' @rdname plainViewOutput
+#' @export
 renderPlainView <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, plainViewOutput, env, quoted = TRUE)
@@ -396,15 +425,6 @@ if ( !isGeneric('plainview') ) {
 
 setMethod('plainview', signature('ANY'),
           function(...) plainView(...))
-
-
-
-
-
-
-
-
-
 
 
 #
