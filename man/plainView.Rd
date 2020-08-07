@@ -10,14 +10,29 @@
 \alias{plainview}
 \title{View raster objects interactively without background map but in any CRS}
 \usage{
-\S4method{plainView}{RasterLayer}(x, maxpixels = 1e+08,
-  col.regions = viridisLite::inferno, at, na.color = "#BEBEBE",
-  legend = TRUE, verbose = FALSE, layer.name = deparse(substitute(x,
-  env = parent.frame())), gdal = TRUE, ...)
+\S4method{plainView}{RasterLayer}(
+  x,
+  maxpixels = 1e+08,
+  col.regions = viridisLite::inferno,
+  at,
+  na.color = "#BEBEBE",
+  legend = TRUE,
+  verbose = FALSE,
+  layer.name = deparse(substitute(x, env = parent.frame())),
+  gdal = TRUE,
+  ...
+)
 
-\S4method{plainView}{RasterStackBrick}(x, r = 3, g = 2, b = 1,
-  na.color = "#BEBEBE", maxpixels = 1e+08,
-  layer.name = deparse(substitute(x, env = parent.frame())), ...)
+\S4method{plainView}{RasterStackBrick}(
+  x,
+  r = 3,
+  g = 2,
+  b = 1,
+  na.color = "#BEBEBE",
+  maxpixels = 1e+08,
+  layer.name = deparse(substitute(x, env = parent.frame())),
+  ...
+)
 
 \S4method{plainView}{SpatialPixelsDataFrame}(x, zcol = 1, ...)
 

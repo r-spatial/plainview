@@ -1,8 +1,8 @@
 Package: plainview
 Type: Package
 Title: Plot Raster Images Interactively on a Plain HTML Canvas
-Version: 0.1.0
-Date: 2019-03-18
+Version: 0.1.1
+Date: 2020-08-07
 Authors@R: 
     c(person(given = "Tim",
              family = "Appelhans",
@@ -38,4 +38,4 @@ Imports:
 Suggests:
     shiny
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1
