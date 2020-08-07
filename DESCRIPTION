@@ -36,6 +36,7 @@ Imports:
     raster,
     viridisLite
 Suggests:
-    shiny
+    shiny,
+    sp
 LazyData: true
 RoxygenNote: 7.1.1
