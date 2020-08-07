@@ -51,5 +51,6 @@ plainview(poppendorf, r = 5, g = 4, b = 3) # false color
 ### Code of Conduct
 
 Please note that the ‘plainview’ project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project
-you agree to abide by its terms.
+Code of
+Conduct](https://github.com/r-spatial/plainview/blob/master/CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by its terms.
