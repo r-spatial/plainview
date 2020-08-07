@@ -128,7 +128,7 @@ setMethod('plainView', signature(x = 'RasterLayer'),
                 col.regions = col.regions
               }
               rng <- range(x[], na.rm = TRUE)
-              if (missing(at)) at <- lattice::do.breaks(rng, 256)
+              if (missing(at) || is.null(at)) at <- lattice::do.breaks(rng, 256)
 
               if (isTRUE(legend)) {
                 legend = list(NULL)

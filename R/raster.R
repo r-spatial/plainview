@@ -11,7 +11,8 @@ raster2PNG <- function(x,
 
   mat <- t(raster::as.matrix(x))
 
-  if (missing(at)) at <- lattice::do.breaks(range(mat, na.rm = TRUE), 256)
+  if (missing(at) || is.null(at))
+    at <- lattice::do.breaks(range(mat, na.rm = TRUE), 256)
 
   cols <- lattice::level.colors(mat,
                                 at = at,
