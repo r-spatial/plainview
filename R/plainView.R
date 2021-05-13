@@ -323,7 +323,7 @@ plainViewInternal <- function(filename, imgnm, crs, dims, leg_fl = NULL) {
 #' @export
 plainViewOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'plainView',
-                                 width, height, package = 'mapview')
+                                 width, height, package = 'plainview')
 }
 
 #' @param expr An expression that generates an HTML widget

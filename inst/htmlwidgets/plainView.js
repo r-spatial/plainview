@@ -249,6 +249,17 @@ function onclick(e) {
   var y = e.clientY - rect.top;
   var px = x / scale - offsetX;
   var py = y / scale - offsetY;
+
+  if (HTMLWidgets.shinyMode) {
+    Shiny.setInputValue("image_click", {
+      //id: layerId ? layerId[idx] : idx+1,
+      //group: pointslayer.settings.className,
+      x: Math.ceil(px),
+      y: Math.ceil(py),
+      //data: content
+    });
+  }
+
   console.log("x: " + Math.ceil(px) + ", y: " + Math.ceil(py));
 }
 
