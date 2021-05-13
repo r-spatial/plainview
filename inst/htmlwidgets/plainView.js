@@ -85,7 +85,8 @@ function init(root, filename, name, crs, dims, legend_filename) {
 	canvas.onmouseup = onmouseup;
 	canvas.onmousemove = onmousemove;
 	canvas.onwheel = onwheel;
-	canvas.onmousewheel =  onmousewheel;
+	canvas.onmousewheel = onmousewheel;
+	canvas.onclick = onclick;
 
 	window.addEventListener("keydown", onkeydown, true);
 
@@ -242,5 +243,12 @@ function onkeydown(e) {
 
 }
 
-
+function onclick(e) {
+  var rect = canvas.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top;
+  var px = x / scale - offsetX;
+  var py = y / scale - offsetY;
+  console.log("x: " + Math.ceil(px) + ", y: " + Math.ceil(py));
+}
 
