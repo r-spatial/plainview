@@ -289,7 +289,7 @@ plainViewInternal <- function(filename, imgnm, crs, dims, leg_fl = NULL) {
   htmlwidgets::createWidget(
     name = 'plainView',
     x = x,
-    package = 'mapview',
+    package = 'plainview',
     dependencies = deps,
     sizingPolicy = sizing
   )
