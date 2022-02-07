@@ -1,4 +1,4 @@
-## plainview 0.1.1
+## plainview 0.1.2 (2022-02-07)
 
 miscellaneous:
 
