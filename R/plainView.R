@@ -71,7 +71,6 @@ if ( !isGeneric('plainView') ) {
 #' @importFrom grDevices grey.colors dev.off col2rgb rgb
 #' @importFrom viridisLite inferno
 #' @importFrom raster raster as.matrix subset sampleRegular fromDisk filename bandnr projection nrow ncol ncell
-#' @importFrom gdalUtilities gdal_translate
 #' @importFrom png writePNG
 #' @importFrom lattice do.breaks level.colors draw.colorkey
 #' @importFrom stats quantile
@@ -98,18 +97,29 @@ setMethod('plainView', signature(x = 'RasterLayer'),
             fl <- paste0(dir, "/img", ".png")
 
             if (raster::fromDisk(x) & gdal) {
-              gdalUtilities::gdal_translate(
-                src_dataset = raster::filename(x)
-                , dst_dataset = fl
-                , of = "PNG"
-                , b = raster::bandnr(x)
+              # gdalUtilities::gdal_translate(
+              #   src_dataset = raster::filename(x)
+              #   , dst_dataset = fl
+              #   , of = "PNG"
+              #   , b = raster::bandnr(x)
+              # )
+              stopifnot(
+                "please install.packages('sf') to be able to use plainview for
+                viewing files from disk" = requireNamespace("sf")
+
               )
-              # tmp = sf::gdal_utils(util = "translate",
-              #                      source = raster::filename(x),
-              #                      destination = fl,
-              #                      options = c("-of", "PNG", "-b",
-              #                                  as.character(raster::bandnr(x)),
-              #                                  "-scale", "-ot", "Byte"))
+              sf::gdal_utils(
+                util = "translate"
+                , source = raster::filename(x)
+                , destination = fl
+                , options = c(
+                  "-of", "PNG"
+                  , "-b", as.character(raster::bandnr(x))
+                  , "-scale"
+                  , "-ot", "Byte"
+                )
+              )
+              cat("sf_seems_to_work\n")
             } else {
               png <- raster2PNG(x,
                                 col.regions = col.regions,
