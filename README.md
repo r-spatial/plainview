@@ -5,8 +5,8 @@
 
 [![Travis build
 status](https://travis-ci.org/r-spatial/plainview.svg?branch=master)](https://travis-ci.org/r-spatial/plainview)
-[![monthly](http://cranlogs.r-pkg.org/badges/plainview)](https://www.rpackages.io/package/plainview)
-[![total](http://cranlogs.r-pkg.org/badges/grand-total/plainview)](https://www.rpackages.io/package/plainview)
+\[![monthly](http://cranlogs.r-pkg.org/badges/plainview)\[\]
+\[![total](http://cranlogs.r-pkg.org/badges/grand-total/plainview)\[\]
 [![CRAN](http://www.r-pkg.org/badges/version/plainview?color=009999)](https://cran.r-project.org/package=plainview)
 [![status](https://tinyverse.netlify.com/badge/plainview)](https://CRAN.R-project.org/package=plainview)
 
