@@ -8,6 +8,7 @@
 
 #### 🍬 miscellaneous
 
+  * suggest `sf` and use translate util in favour of `gdalUtils::gdal_translate`.
 
 ## plainview 0.1.2 (2022-02-07)
 
