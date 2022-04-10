@@ -3,12 +3,14 @@
 
 # plainview - Interactively Explore (Raster)Images
 
-[![Travis build
-status](https://travis-ci.org/r-spatial/plainview.svg?branch=master)](https://travis-ci.org/r-spatial/plainview)
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/r-spatial/plainview/workflows/R-CMD-check/badge.svg)](https://github.com/r-spatial/plainview/actions)
 ![monthly](http://cranlogs.r-pkg.org/badges/plainview)
 ![total](http://cranlogs.r-pkg.org/badges/grand-total/plainview)
 [![CRAN](http://www.r-pkg.org/badges/version/plainview?color=009999)](https://cran.r-project.org/package=plainview)
 [![status](https://tinyverse.netlify.com/badge/plainview)](https://CRAN.R-project.org/package=plainview)
+<!-- badges: end -->
 
 `plainview` enables interactive exploration of (raster)images. Images
 will be rendered on a plain HTML canvas (hence the name of the package).
