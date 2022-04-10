@@ -40,3 +40,4 @@ Suggests:
     sp
 LazyData: true
 RoxygenNote: 7.1.2
+URL: https://r-spatial.github.io/plainview/
