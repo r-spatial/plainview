@@ -4,6 +4,8 @@
 
 #### 🐛 bug fixes
 
+  * check R version against character not numeric (mail from R core).
+
 #### 💬 documentation etc
 
 #### 🍬 miscellaneous

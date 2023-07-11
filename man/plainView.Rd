@@ -99,13 +99,13 @@ For plainView there are a few keyboard shortcuts defined:
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{RasterStackBrick}: \code{\link{stack}} / \code{\link{brick}}
+\item \code{plainView(RasterStackBrick)}: \code{\link{stack}} / \code{\link{brick}}
 
-\item \code{SpatialPixelsDataFrame}: \code{\link[sp]{SpatialPixelsDataFrame}}
+\item \code{plainView(SpatialPixelsDataFrame)}: \code{\link[sp]{SpatialPixelsDataFrame}}
 
-\item \code{ANY}: alias for ease of typing
+\item \code{plainview(ANY)}: alias for ease of typing
+
 }}
-
 \examples{
 if (interactive()) {
 
