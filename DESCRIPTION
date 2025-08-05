@@ -1,6 +1,6 @@
 Package: plainview
 Title: Plot Raster Images Interactively on a Plain HTML Canvas
-Version: 0.2.1.9001
+Version: 0.2.1.9002
 Authors@R: 
     c(person(given = "Tim",
              family = "Appelhans",

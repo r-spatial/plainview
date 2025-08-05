@@ -1,4 +1,4 @@
-# plainview 0.2.1.9001 (2025-08-05)
+# plainview 0.2.1.9002 (2025-08-05)
 
 #### ✨ features and improvements
 
