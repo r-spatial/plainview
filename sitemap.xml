@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://r-spatial.github.io/plainview/404.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/reference/plainView.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/reference/plainViewOutput.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/reference/plainview-package.html</loc>
-  </url>
-  <url>
-    <loc>https://r-spatial.github.io/plainview/reference/poppendorf.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://r-spatial.github.io/plainview/404.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/LICENSE-text.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/authors.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/index.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/news/index.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/reference/index.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/reference/plainView.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/reference/plainViewOutput.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/reference/plainview-package.html</loc></url>
+<url><loc>https://r-spatial.github.io/plainview/reference/poppendorf.html</loc></url>
 </urlset>
+
