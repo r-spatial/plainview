@@ -6,6 +6,8 @@
 
 #### 💬 documentation etc
 
+  * add proper package anchors to .Rd files.
+
 #### 🍬 miscellaneous
 
 
