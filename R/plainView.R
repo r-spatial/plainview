@@ -9,15 +9,16 @@ if ( !isGeneric('plainView') ) {
 #' this function produces an interactive view of the specified
 #' raster object(s) on a plain grey background but for any CRS.
 #'
-#' @param x a \code{\link{raster}}* object
+#' @param x a \code{\link[raster]{raster}}* object
 #' @param maxpixels integer > 0. Maximum number of cells to use for the plot.
-#' If maxpixels < \code{ncell(x)}, sampleRegular is used before plotting.
-#' @param col.regions color (palette).See \code{\link{levelplot}} for details.
+#' If maxpixels < \code{\link[raster]{ncell}(x)},
+#' \code{\link[raster]{sampleRegular}} is used before plotting.
+#' @param col.regions color (palette).See \code{\link[lattice]{levelplot}} for details.
 #' @param at the breakpoints used for the visualisation. See
-#' \code{\link{levelplot}} for details.
+#' \code{\link[lattice]{levelplot}} for details.
 #' @param na.color color for missing values.
 #' @param legend either logical or a list specifying any of the components
-#' decribed in the \code{colorkey} section of \link[lattice]{levelplot}.
+#' decribed in the \code{colorkey} section of \code{\link[lattice]{levelplot}}.
 #' @param verbose should some details be printed during the process
 #' @param layer.name the name of the layer to be shown on the map
 #' @param gdal logical. If TRUE (default) gdal_translate is used
@@ -29,7 +30,7 @@ if ( !isGeneric('plainView') ) {
 #' If the raster object is not in memory
 #' (i.e. if \code{raster::inMemory} is \code{FLASE})
 #' and argument \code{gdal} is set to TRUE (default) gdal_translate
-#' is used to translate the rsater object to a png file to be rendered in
+#' is used to translate the raster object to a png file to be rendered in
 #' the viewer/browser. This is fast for large rasters. In this case, argument
 #' \code{maxpixels} is not used, instead the image is rendered in original resolution.
 #' However, this means that RasterLayers will be shown in greyscale.
@@ -171,146 +172,12 @@ setMethod('plainView', signature(x = 'RasterLayer'),
 
 )
 
-# ## Raster Stack/Brick ===========================================================
-# #' @describeIn plainView \code{\link{stack}} / \code{\link{brick}}
-#
-# setMethod('plainView', signature(x = 'RasterStackBrick'),
-#           function(x,
-#                    map = NULL,
-#                    maxpixels = mapviewOptions(console = FALSE)$maxpixels,
-#                    color = mapViewPalette(7),
-#                    na.color = mapviewOptions(console = FALSE)$nacolor,
-#                    values = NULL,
-#                    legend = FALSE,
-#                    legend.opacity = 1,
-#                    trim = TRUE,
-#                    verbose = mapviewOptions(console = FALSE)$verbose,
-#                    ...) {
-#
-#             if (mapviewOptions(console = FALSE)$platform == "leaflet") {
-#               leafletPlainRSB(x,
-#                               map,
-#                               maxpixels,
-#                               color,
-#                               na.color,
-#                               values,
-#                               legend,
-#                               legend.opacity,
-#                               trim,
-#                               verbose,
-#                               ...)
-#             } else {
-#               NULL
-#             }
-#
-#           }
-# )
-#
-#
-#
-# ## Satellite object =======================================================
-# #' @describeIn plainView \code{\link{satellite}}
-#
-# setMethod('plainView', signature(x = 'Satellite'),
-#           function(x,
-#                    ...) {
-#
-#             pkgs <- c("leaflet", "satellite", "magrittr")
-#             tst <- sapply(pkgs, "requireNamespace",
-#                           quietly = TRUE, USE.NAMES = FALSE)
-#
-#             lyrs <- x@layers
-#
-#             m <- plainView(lyrs[[1]], ...)
-#
-#             if (length(lyrs) > 1) {
-#               for (i in 2:length(lyrs)) {
-#                 m <- plainView(lyrs[[i]], m, ...)
-#               }
-#             }
-#
-#             if (length(getLayerNamesFromMap(m)) > 1) {
-#               m <- leaflet::hideGroup(map = m, group = layers2bHidden(m))
-#             }
-#
-#             out <- new('mapview', object = list(x), map = m)
-#
-#             return(out)
-#
-#           }
-#
-# )
-#
-#
-# ## SpatialPixelsDataFrame =================================================
-# #' @describeIn plainView \code{\link{SpatialPixelsDataFrame}}
-# #'
-# setMethod('plainView', signature(x = 'SpatialPixelsDataFrame'),
-#           function(x,
-#                    zcol = NULL,
-#                    ...) {
-#
-#             if (mapviewOptions(console = FALSE)$platform == "leaflet") {
-#               leafletPlainPixelsDF(x,
-#                                    zcol,
-#                                    ...)
-#             } else {
-#               NULL
-#             }
-#
-#           }
-# )
-#
-#
-# #' <Add Title>
-# #'
-# #' <Add Description>
-# #'
-# #' @import htmlwidgets
-# #'
-# #' @export
-
-plainViewInternal <- function(filename, imgnm, crs, dims, leg_fl = NULL) {
-
-  x <- list(imgnm = imgnm,
-            crs = crs,
-            dims = dims,
-            legend = !is.null(leg_fl))
-
-  image_dir <- dirname(filename)
-  image_file <- basename(filename)
-
-  attachments <- list(image_file)
-
-  if(!is.null(leg_fl)) {
-    legend_dir <- dirname(leg_fl)  #same as image_dir  not checked
-    legend_file <- basename(leg_fl)
-    attachments <- c(attachments, legend_file)
-  }
-
-  dep1 <- htmltools::htmlDependency(name = "image",
-                                    version = "1",
-                                    src = c(file = image_dir),
-                                    attachment = attachments)
-
-  deps <- list(dep1)
-
-  sizing <- htmlwidgets::sizingPolicy(padding = 0, browser.fill = TRUE)
-
-  htmlwidgets::createWidget(
-    name = 'plainView',
-    x = x,
-    package = 'plainview',
-    dependencies = deps,
-    sizingPolicy = sizing
-  )
-}
 
 #' Widget output/render function for use in Shiny
 #'
 #' @param outputId Output variable to read from
 #' @param width,height the width and height of the map
-#' (see \code{\link{shinyWidgetOutput}})
+#' (see \code{\link[htmlwidgets]{shinyWidgetOutput}})
 #'
 #' @examples
 #' if (interactive()) {
@@ -350,9 +217,8 @@ renderPlainView <- function(expr, env = parent.frame(), quoted = FALSE) {
 }
 
 
-
 ## Raster Stack/Brick ===========================================================
-#' @describeIn plainView \code{\link{stack}} / \code{\link{brick}}
+#' @describeIn plainView \code{\link[raster]{stack}} / \code{\link[raster]{brick}}
 #'
 #' @param r integer. Index of the Red channel, between 1 and nlayers(x)
 #' @param g integer. Index of the Green channel, between 1 and nlayers(x)
@@ -397,7 +263,6 @@ setMethod('plainView', signature(x = 'RasterStackBrick'),
 )
 
 
-
 ## SpatialPixelsDataFrame =================================================
 #' @describeIn plainView \code{\link[sp]{SpatialPixelsDataFrame}}
 #'
@@ -418,11 +283,6 @@ setMethod('plainView', signature(x = 'SpatialPixelsDataFrame'),
 )
 
 
-
-
-
-
-
 ## plainview ==============================================================
 
 if ( !isGeneric('plainview') ) {
@@ -437,6 +297,43 @@ if ( !isGeneric('plainview') ) {
 setMethod('plainview', signature('ANY'),
           function(...) plainView(...))
 
+
+
+plainViewInternal <- function(filename, imgnm, crs, dims, leg_fl = NULL) {
+
+  x <- list(imgnm = imgnm,
+            crs = crs,
+            dims = dims,
+            legend = !is.null(leg_fl))
+
+  image_dir <- dirname(filename)
+  image_file <- basename(filename)
+
+  attachments <- list(image_file)
+
+  if(!is.null(leg_fl)) {
+    legend_dir <- dirname(leg_fl)  #same as image_dir  not checked
+    legend_file <- basename(leg_fl)
+    attachments <- c(attachments, legend_file)
+  }
+
+  dep1 <- htmltools::htmlDependency(name = "image",
+                                    version = "1",
+                                    src = c(file = image_dir),
+                                    attachment = attachments)
+
+  deps <- list(dep1)
+
+  sizing <- htmlwidgets::sizingPolicy(padding = 0, browser.fill = TRUE)
+
+  htmlwidgets::createWidget(
+    name = 'plainView',
+    x = x,
+    package = 'plainview',
+    dependencies = deps,
+    sizingPolicy = sizing
+  )
+}
 
 #
 #

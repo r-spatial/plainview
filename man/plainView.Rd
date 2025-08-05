@@ -39,20 +39,21 @@
 \S4method{plainview}{ANY}(...)
 }
 \arguments{
-\item{x}{a \code{\link{raster}}* object}
+\item{x}{a \code{\link[raster]{raster}}* object}
 
 \item{maxpixels}{integer > 0. Maximum number of cells to use for the plot.
-If maxpixels < \code{ncell(x)}, sampleRegular is used before plotting.}
+If maxpixels < \code{\link[raster]{ncell}(x)},
+\code{\link[raster]{sampleRegular}} is used before plotting.}
 
-\item{col.regions}{color (palette).See \code{\link{levelplot}} for details.}
+\item{col.regions}{color (palette).See \code{\link[lattice]{levelplot}} for details.}
 
 \item{at}{the breakpoints used for the visualisation. See
-\code{\link{levelplot}} for details.}
+\code{\link[lattice]{levelplot}} for details.}
 
 \item{na.color}{color for missing values.}
 
 \item{legend}{either logical or a list specifying any of the components
-decribed in the \code{colorkey} section of \link[lattice]{levelplot}.}
+decribed in the \code{colorkey} section of \code{\link[lattice]{levelplot}}.}
 
 \item{verbose}{should some details be printed during the process}
 
@@ -81,7 +82,7 @@ raster object(s) on a plain grey background but for any CRS.
 If the raster object is not in memory
 (i.e. if \code{raster::inMemory} is \code{FLASE})
 and argument \code{gdal} is set to TRUE (default) gdal_translate
-is used to translate the rsater object to a png file to be rendered in
+is used to translate the raster object to a png file to be rendered in
 the viewer/browser. This is fast for large rasters. In this case, argument
 \code{maxpixels} is not used, instead the image is rendered in original resolution.
 However, this means that RasterLayers will be shown in greyscale.
@@ -99,7 +100,7 @@ For plainView there are a few keyboard shortcuts defined:
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{plainView(RasterStackBrick)}: \code{\link{stack}} / \code{\link{brick}}
+\item \code{plainView(RasterStackBrick)}: \code{\link[raster]{stack}} / \code{\link[raster]{brick}}
 
 \item \code{plainView(SpatialPixelsDataFrame)}: \code{\link[sp]{SpatialPixelsDataFrame}}
 

@@ -37,6 +37,6 @@ Suggests:
     sf,
     sp
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 URL: https://r-spatial.github.io/plainview/, https://github.com/r-spatial/plainview
 BugReports: https://github.com/r-spatial/plainview/issues

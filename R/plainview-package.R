@@ -9,12 +9,12 @@
 #' (similar to raster::plotRGB - but interactive).
 #'
 #' @name plainview-package
-#' @docType package
 #' @title Plot Raster Images Interactively on a Plain HTML Canvas
 #' @author Tim Appelhans, Stephan Woellauer
 #' \emph{Maintainer:} Tim Appelhans \email{tim.appelhans@gmail.com}
 #'
-#' @keywords package
+#' @keywords internal
+"_PACKAGE"
 #'
 NULL
 #'

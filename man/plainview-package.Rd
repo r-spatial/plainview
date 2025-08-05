@@ -16,8 +16,17 @@ includes zooming, panning, and mouse location information. In case of
 multi-layer RasterStacks or RasterBricks, RBG image plots are created
 (similar to raster::plotRGB - but interactive).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://r-spatial.github.io/plainview/}
+  \item \url{https://github.com/r-spatial/plainview}
+  \item Report bugs at \url{https://github.com/r-spatial/plainview/issues}
+}
+
+}
 \author{
 Tim Appelhans, Stephan Woellauer
 \emph{Maintainer:} Tim Appelhans \email{tim.appelhans@gmail.com}
 }
-\keyword{package}
+\keyword{internal}
