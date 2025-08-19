@@ -1,14 +1,8 @@
-# plainview 0.2.1.9003 (2025-08-05)
-
-#### ✨ features and improvements
-
-#### 🐛 bug fixes
+# plainview 0.2.2 (2025-08-19)
 
 #### 💬 documentation etc
 
   * add proper package anchors to .Rd files.
-
-#### 🍬 miscellaneous
 
 
 # plainview 0.2.1 (2023-07-11)
